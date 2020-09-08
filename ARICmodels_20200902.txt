@@ -1,0 +1,148 @@
+[1] 12043
+# A tibble: 16 x 5
+   agecat  sex    race      N   prop
+   <fct>   <fct>  <fct> <int>  <dbl>
+ 1 Agecat0 Female White  1513 0.126 
+ 2 Agecat0 Female Black   637 0.0529
+ 3 Agecat0 Male   White  1207 0.100 
+ 4 Agecat0 Male   Black   325 0.0270
+ 5 Agecat1 Female White  1447 0.120 
+ 6 Agecat1 Female Black   524 0.0435
+ 7 Agecat1 Male   White  1219 0.101 
+ 8 Agecat1 Male   Black   282 0.0234
+ 9 Agecat2 Female White  1292 0.107 
+10 Agecat2 Female Black   415 0.0345
+11 Agecat2 Male   White  1244 0.103 
+12 Agecat2 Male   Black   247 0.0205
+13 Agecat3 Female White   640 0.0531
+14 Agecat3 Female Black   208 0.0173
+15 Agecat3 Male   White   703 0.0584
+16 Agecat3 Male   Black   140 0.0116
+
+Call:
+glm(formula = hba1c ~ base.age60 + sex + race + educ + diet_p + 
+    diet_w, family = Gamma(link = "log"), data = Atable_0)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.47470  -0.09243  -0.04212   0.01681   1.25496  
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    1.711818   0.003959 432.411  < 2e-16 ***
+base.age60     0.031596   0.003544   8.916  < 2e-16 ***
+sexMale        0.002710   0.003850   0.704  0.48155    
+raceBlack      0.119778   0.004417  27.115  < 2e-16 ***
+educHS         0.027173   0.004135   6.571 5.22e-11 ***
+educLessThanHS 0.046915   0.005064   9.265  < 2e-16 ***
+diet_p         0.010618   0.001829   5.806 6.54e-09 ***
+diet_w         0.005958   0.001922   3.100  0.00194 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Gamma family taken to be 0.03820002)
+
+    Null deviance: 384.61  on 12042  degrees of freedom
+Residual deviance: 341.71  on 12035  degrees of freedom
+AIC: 33317
+
+Number of Fisher Scoring iterations: 4
+
+Call:
+multinom(formula = educ ~ base.age60 + sex + race, data = Atable_0)
+
+Coefficients:
+           (Intercept) base.age60    sexMale  raceBlack
+HS           0.4847271  0.1457248 -0.5278806 -0.3316085
+LessThanHS  -0.6072077  0.8304544 -0.1951193  1.2043186
+
+Std. Errors:
+           (Intercept) base.age60    sexMale  raceBlack
+HS          0.03229662 0.04143561 0.04238161 0.05553613
+LessThanHS  0.04124090 0.05042426 0.05144334 0.05639333
+
+Residual Deviance: 24529.8 
+AIC: 24545.8 
+
+Call:
+lm(formula = diet_p ~ base.age60 + sex + race + educ, data = Atable_0)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.3809 -0.6733 -0.1612  0.4906  9.7874 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     0.35494    0.01881  18.865  < 2e-16 ***
+base.age60      0.14839    0.01758   8.442  < 2e-16 ***
+sexMale        -0.27257    0.01812 -15.044  < 2e-16 ***
+raceBlack      -0.06658    0.02204  -3.021  0.00253 ** 
+educHS         -0.21686    0.02041 -10.627  < 2e-16 ***
+educLessThanHS -0.31614    0.02477 -12.761  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9755 on 12037 degrees of freedom
+Multiple R-squared:  0.03567,	Adjusted R-squared:  0.03527 
+F-statistic: 89.06 on 5 and 12037 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = diet_w ~ base.age60 + sex + race + educ, data = Atable_0)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.6153 -0.6569 -0.1249  0.5085  7.3851 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    -0.51408    0.01790 -28.714   <2e-16 ***
+base.age60     -0.14224    0.01673  -8.504   <2e-16 ***
+sexMale         0.60188    0.01724  34.910   <2e-16 ***
+raceBlack       0.01059    0.02097   0.505    0.614    
+educHS          0.23833    0.01942  12.273   <2e-16 ***
+educLessThanHS  0.41028    0.02358  17.403   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9283 on 12037 degrees of freedom
+Multiple R-squared:  0.1108,	Adjusted R-squared:  0.1105 
+F-statistic: 300.1 on 5 and 12037 DF,  p-value: < 2.2e-16
+
+Linear mixed model fit by REML ['lmerMod']
+Formula: mem.s ~ age60 * (hba1c_U65 + hba1c_O65 + race + educ + sex +      diet_p + diet_w) + (1 + age60 | ID)
+   Data: memData2
+
+REML criterion at convergence: 81905.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6394 -0.5186  0.0201  0.5618  3.2793 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr
+ ID       (Intercept) 0.3200   0.5657       
+          age60       0.1095   0.3309   0.10
+ Residual             0.6097   0.7808       
+Number of obs: 29307, groups:  ID, 12043
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)           0.355685   0.025744  13.816
+age60                -0.592486   0.023735 -24.962
+hba1c_U65            -0.044349   0.018198  -2.437
+hba1c_O65            -0.045430   0.009640  -4.713
+raceBlack            -0.432987   0.019475 -22.233
+educHS               -0.165533   0.017316  -9.559
+educLessThanHS       -0.462606   0.021860 -21.163
+sexMale              -0.398712   0.016299 -24.462
+diet_p               -0.012816   0.007763  -1.651
+diet_w               -0.033456   0.008127  -4.117
+age60:hba1c_U65      -0.055391   0.017056  -3.248
+age60:hba1c_O65       0.006850   0.010971   0.624
+age60:raceBlack       0.051027   0.017757   2.874
+age60:educHS         -0.003045   0.015005  -0.203
+age60:educLessThanHS  0.019336   0.020540   0.941
+age60:sexMale        -0.014442   0.014660  -0.985
+age60:diet_p         -0.005848   0.006991  -0.836
+age60:diet_w          0.008067   0.007431   1.086
